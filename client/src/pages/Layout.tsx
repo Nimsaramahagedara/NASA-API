@@ -47,7 +47,7 @@ const Layout = () => {
 
     return (
         <main>
-            <div className='bg-black/50 fixed top-0 left-0 w-max h-full'>
+            <div className='bg-black/50 fixed top-0 left-0 w-max h-full overflow-hidden'>
                 <Button type="primary" onClick={toggleCollapsed} style={{ marginBottom: 16 }}>
                     {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                 </Button>
@@ -56,7 +56,8 @@ const Layout = () => {
                     defaultOpenKeys={['sub1']}
                     mode="inline"
                     theme="dark"
-                    style={{width:collapsed  ? '' :'25vw'}}
+                    className={`${collapsed ? '' :'md:w-[25vw] w-full'}`}
+                    // style={{width:collapsed  ? '' :'25vw'}}
                     inlineCollapsed={collapsed}
                     items={items}
                 />
@@ -64,7 +65,7 @@ const Layout = () => {
             </div>
             <Outlet />
 
-            <div className='bg-black/50 fixed top-0 right-0 w-1/4 p-10 h-full'>
+            <div className='bg-black/50 hidden md:block fixed top-0 right-0 w-1/4 p-10 h-full'>
 
             </div>
         </main>
