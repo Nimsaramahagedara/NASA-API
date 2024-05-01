@@ -17,10 +17,11 @@ function App() {
           theme="dark"
         />
         <Routes>
+          <Route path='/' element={<Login />} />
           <Route path='/' element={<Layout />}>
             <Route path='home' element={<Home />} />
           </Route>
-          <Route path='/' element={<Login />} />
+
 
         </Routes>
       </BrowserRouter>
