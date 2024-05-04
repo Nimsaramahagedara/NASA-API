@@ -1,13 +1,16 @@
-import { Button } from 'antd'
-import  { useState } from 'react'
+import { Avatar, Button, Typography } from 'antd'
+import  { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import { UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
 import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
   } from '@ant-design/icons';
+import axios from 'axios';
+import Stat from '../components/Stat';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -33,6 +36,7 @@ const items: MenuItem[] = [
 const Layout = () => {
     const [current, setCurrent] = useState<string>('mail');
     const [collapsed, setCollapsed] = useState(false);
+    const [users, setUsers] = useState<Array<any>>([])
 
     const toggleCollapsed = () => {
       setCollapsed(!collapsed);
@@ -41,6 +45,19 @@ const Layout = () => {
     const onClick: MenuProps['onClick'] = (e) => {
         console.log('click ', e);
     };
+    const getallUsers = async()=>{
+        try {
+            const resp = await axios.get(`${import.meta.env.VITE_LOCAL_SERVER}/all`)
+            setUsers(resp.data)
+        } catch (error) {
+            console.log(error);
+            
+        }
+    }
+
+    useEffect(()=>{
+        getallUsers()
+    },[])
 
     return (
         <main>
@@ -63,7 +80,16 @@ const Layout = () => {
             <Outlet />
 
             <div className='bg-black/50 hidden md:block fixed top-0 right-0 w-1/4 p-10 h-full'>
-
+                <Stat value={users?.length}/>
+                <Typography.Title level={3} type='danger'  className='text-white'>User List</Typography.Title>
+                    {
+                        users?.map((us)=>(
+                            <div className='flex px-5 py-2 items-center text-white gap-2 bg-blue-900 rounded-xl hover:bg-blue-950'>
+                                <Avatar size={32} icon={<UserOutlined />}/>
+                                {us.firstName + ' '+ us.lastName}
+                            </div>
+                        ))
+                    }
             </div>
         </main>
     )
