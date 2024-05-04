@@ -83,7 +83,7 @@ const Page = () => {
                     submitButtonProps: {},
 
                     // Fully customize the entire area
-                    render: (props : any, doms : any) => {
+                    render: (props : any) => {
                         console.log(props);
                         return [
                             <Button
