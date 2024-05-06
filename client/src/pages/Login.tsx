@@ -46,7 +46,7 @@ const Page = () => {
             if(loginType === 'login'){
                 const resp = await axios.post(`${import.meta.env.VITE_LOCAL_SERVER}/login`,{email,password})
                 console.log(resp.data);
-                navigate('/home')
+                navigate('/dashboard')
                 
             }else{
                 const resp = await axios.post(`${import.meta.env.VITE_LOCAL_SERVER}/register`,{email,password:captcha,firstName,lastName})
