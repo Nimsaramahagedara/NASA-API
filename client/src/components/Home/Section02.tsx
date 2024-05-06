@@ -20,7 +20,7 @@ const Section02 = () => {
 
     const getMarsPhotos = async ({ pN }: { pN?: number } = { pN: pageNumber }) => {
         try {
-            const resp = await axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=${pN}&api_key=${import.meta.env.VITE_API_KEY}`)
+            const resp = await axios.get(`${import.meta.env.VITE_LOCAL_SERVER}/nasa/feed`)
             console.log(resp?.data)
             setPics(prev => [...prev, ...resp?.data?.photos])
             setLoading(false)

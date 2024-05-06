@@ -4,6 +4,7 @@ import { dbConfig } from './utils/dbconfig.js';
 import cors from 'cors'
 import morgan from 'morgan'
 import userRouter from './routes/userRoutes.js';
+import nasaRouter from './routes/nasaRoutes.js';
 
 dotenv.config();
 const PORT = process.env.PORT || 3000
@@ -17,7 +18,7 @@ app.get('/', (req, res) => {
 })	
 
 app.use('/', userRouter)
-
+app.use('/nasa', nasaRouter)
 
 dbConfig();
 

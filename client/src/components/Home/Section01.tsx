@@ -17,7 +17,7 @@ const Section01 = () => {
 
     const getImageOfTheDay = async () => {
         try {
-            const resp = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=${import.meta.env.VITE_API_KEY}`)
+            const resp = await axios.get(`${import.meta.env.VITE_LOCAL_SERVER}/nasa`)
             console.log(resp.data);
             setPic(resp.data)
             setLoading(false)
