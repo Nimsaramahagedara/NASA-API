@@ -1,6 +1,6 @@
 import { Avatar, Button, Typography } from 'antd'
 import  { useEffect, useState } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import { UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
@@ -28,6 +28,7 @@ const items: MenuItem[] = [
     {
         label: 'Logout',
         key: 'SubMenu',
+        onClick:()=>{window.location.href = '/'},
         icon: <SettingOutlined />,
         
     }
@@ -37,6 +38,7 @@ const Layout = () => {
     const [current, setCurrent] = useState<string>('mail');
     const [collapsed, setCollapsed] = useState(false);
     const [users, setUsers] = useState<Array<any>>([])
+    const navigate = useNavigate()
 
     const toggleCollapsed = () => {
       setCollapsed(!collapsed);
