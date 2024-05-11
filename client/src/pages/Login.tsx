@@ -1,7 +1,6 @@
 import {
     AlipayOutlined,
     LockOutlined,
-    MobileOutlined,
     TaobaoOutlined,
     UserOutlined,
     WeiboOutlined,
@@ -84,7 +83,7 @@ const Page = () => {
 
                     // Fully customize the entire area
                     render: (props : any) => {
-                        console.log(props);
+                       // console.log(props);
                         return [
                             <Button
                                 type='primary'
