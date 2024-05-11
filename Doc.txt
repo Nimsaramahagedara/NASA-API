@@ -1,0 +1,17 @@
+APIS Used
+1.Astronomy Picture of the Day
+2.Mars Rover Photos
+
+Challenges faced
+1.Rate Limits and Throttling: 
+ APIs enforce rate limits and throttling to prevent abuse and ensure fair usage. 
+ Exceeding these limits can lead to temporary blocks or degraded service.
+2.Testing and Debugging
+Initializing a testing library with the vite is somewhat challenging, 
+and i was able to integrate it with the vitetest testing library
+
+
+How To Run:
+
+1.open server in terminal and run command : npm i && npm start
+2.open client in terminal and run command : npm i && npm run dev
