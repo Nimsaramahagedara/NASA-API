@@ -25,6 +25,7 @@ const Section02 = () => {
             setPics(prev => [...prev, ...resp?.data?.photos])
             setLoading(false)
         } catch (error) {
+            setLoading (false)
             console.log(error);
 
         }

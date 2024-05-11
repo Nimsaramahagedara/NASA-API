@@ -22,6 +22,7 @@ const Section01 = () => {
             setPic(resp.data)
             setLoading(false)
         } catch (error) {
+            setLoading(false)
             console.log(error);
 
         }
